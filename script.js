@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // event listener -- an event happens on the page
 
@@ -11,25 +11,25 @@ let highscore = 0;
 const originalMSG = `Start guessing...`;
 
 // Reseting the user interface by clicking on the AGAIN button
-document.querySelector('.again').addEventListener('click', function () {
+document.querySelector(".again").addEventListener("click", function () {
   score = 20; // resetting the score to 20
-  document.querySelector('.score').textContent = score;
-  document.querySelector('.message').textContent = originalMSG; // resetting to the original message
-  document.querySelector('.guess').value = ` `;
-  document.querySelector('body').style.backgroundColor = '#222'; // resetting to the background color
-  document.querySelector('.number').style.width = '15rem';
+  document.querySelector(".score").textContent = score;
+  document.querySelector(".message").textContent = originalMSG; // resetting to the original message
+  document.querySelector(".guess").value = ` `;
+  document.querySelector("body").style.backgroundColor = "#222"; // resetting to the background color
+  document.querySelector(".number").style.width = "15rem";
 });
 
 // Refactoring our code by creating some functions
 
 const displayMessage = function (message) {
-  document.querySelector('.message').textContent = message;
+  document.querySelector(".message").textContent = message;
 };
 
 // Click onEvent listener for check button
 
-document.querySelector('.check').addEventListener('click', function () {
-  const guess = Number(document.querySelector('.guess').value);
+document.querySelector(".check").addEventListener("click", function () {
+  const guess = Number(document.querySelector(".guess").value);
 
   // if we put 0 as an input, we know that this is a Falsy value, so we can use it as follows
   if (!guess) {
@@ -43,16 +43,16 @@ document.querySelector('.check').addEventListener('click', function () {
     displayMessage(`Correct number!!`);
 
     // Manipulating styles using css within javascript file
-    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector("body").style.backgroundColor = "#bdbdbd";
 
-    document.querySelector('.number').style.width = '30rem';
+    document.querySelector(".number").style.width = "30rem";
     // Guess is too high.
 
     // update your highscore. It will be the same as the score at the moment we make the correct guess
     // the highscore should remain in every case it is smaller than the score
     if (score > highscore) {
       highscore = score;
-      document.querySelector('.highscore').textContent = highscore;
+      document.querySelector(".highscore").textContent = highscore;
     }
   }
 
@@ -64,9 +64,9 @@ document.querySelector('.check').addEventListener('click', function () {
       displayMessage(guess > secretNumber ? `Too damn high!!` : `Too low!!`);
       score = score - 1;
       //or score--;
-      document.querySelector('.score').textContent = score;
+      document.querySelector(".score").textContent = score;
     } else {
-      document.querySelector('.score').textContent = `You LOST THE GAME`;
+      document.querySelector(".score").textContent = `You LOST THE GAME`;
     }
   }
 });
